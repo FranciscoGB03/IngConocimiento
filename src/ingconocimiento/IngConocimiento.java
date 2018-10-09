@@ -8,9 +8,11 @@ Materia:ingeniería del conocimiento
 
 package ingconocimiento;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltMath.power;
 import ingconocimiento.datos.Archivos;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import static java.lang.Math.sqrt;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,7 +31,7 @@ public class IngConocimiento {
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner s =new Scanner(System.in);
-        try{
+        //try{
             int parametro;
             String direccion;
             String[]cadena=null;            
@@ -59,9 +61,10 @@ public class IngConocimiento {
                 }
             }catch(Exception e){
                 System.out.println("");
-            }
+            }            
+            
             //impresion de la matriz
-            /*try{
+            try{
                 for (Double[] matriz1 : matriz) {
                     for (Double matriz11 : matriz1) {
                         //System.out.println("valor "+i+" "+j+" = "+matriz[i][j]);
@@ -71,9 +74,37 @@ public class IngConocimiento {
                 }
             }catch(Exception y){
                 System.out.println("error en la impresion de la matriz");
-            }*/
-            
+            }
             //calculo de la distancia
+            System.out.println("ingresa un nuevo objecto");
+            String no=s.next();            
+            System.out.println("ingrese el separdor");
+            String sepa=s.next();
+            System.out.println("ingrese el numero de parametros:");
+            int para=s.nextInt();
+            String [] nuevo=no.split(sepa);
+            Double objeton []=new Double [para];   
+            //obtencio del nuevo objeto a clasificar
+            for (int i=0;i<nuevo.length;i++) {                
+                objeton[i]=Double.valueOf(nuevo[i]);
+                    System.out.println("objeto["+i+"]:"+objeton[i]);                
+            }
+            //calculo de la distancia entre el nuevo objeto y los objetos en la base de datos
+            Double distancia[][]=new Double[obj][parametro];
+            System.out.println("la potencia de 3 al cuadrado es:"+power(3,2));
+            for (int i = 0; i < distancia.length; i++) {
+                for (int j = 0; j < 1; j++) {
+                    System.out.println("valor de matriz["+i+"]["+j+"]:"+matriz[i][j]);
+                    distancia[i][j]=sqrt(power((matriz[i][j]-objeton[0]),2)+power((matriz[i][j+1]-objeton[1]),2));
+                    System.out.println("distancia["+i+"]["+j+"]:"+distancia[i][j]);
+                }
+        }
+            
+            
+            
+            
+            /*
+            
             DecimalFormat formato =  new DecimalFormat("#.00");
             Integer fila = d.datos(direccion);//Aqui usariamos el numero de entidades extraidas del documento
             Integer columna = parametro;//Aqui usariamos el numero maximo de caracteristicas de cada entidad
@@ -112,11 +143,11 @@ public class IngConocimiento {
                 }
                 System.out.print("\n");
             }           
+            */
             
-            
-        }catch(Exception e){
+        /*}catch(Exception e){
             System.out.println("el error fue:"+e.getMessage());
-        }               
+        } */    
     }
     
 }
