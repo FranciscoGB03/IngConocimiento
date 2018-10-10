@@ -99,7 +99,26 @@ public class IngConocimiento {
                     System.out.println("distancia["+i+"]["+j+"]:"+distancia[i][j]);
                 }
         }
-            
+           // Burbuja
+		int intercambios = 0, comparaciones = 0;
+		
+		Double aux;
+		for(int i = 1; i<distancia.length; i++){
+			for(int j= distancia.length-1; j>=i; j-- ){
+				comparaciones++;
+				if (distancia[i-1][j-1]>distancia[i][j]){
+					intercambios++;
+					aux = distancia[i-1][j-1];
+					distancia[i-1][j-1] = distancia[i][j];
+					distancia[i][j] = aux;			
+				}
+			}
+		}	
+		System.out.println("Numero de intercambios:"+intercambios);
+		System.out.println("Numero de comparaciones:"+comparaciones);
+		//return arreglo;
+	//}
+ 
             
             
             
@@ -150,4 +169,5 @@ public class IngConocimiento {
         } */    
     }
     
+
 }
